@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lorenz System</title>
+        <link rel="stylesheet" href="css/styles.scss">
+        <script type="module" src="js/main.js"></script>
+    </head>
+    <body>
+        <div class="container text-center w-75 py-4 mx-auto">
+            <h1>Lorenz System</h1>
+            <h3>Visualization of the Chaotic Attractor</h3>
+            <p class="text-justify">
+                <b>Abstract. </b>The Lorenz system is a system of ordinary
+                differential equations first studied by mathematician and
+                meteorologist Edward Lorenz. It is notable for having chaotic
+                solutions for certain parameter values and initial conditions.
+                In particular, the Lorenz attractor is a set of chaotic
+                solutions of the Lorenz system.
+            </p>
+        </div>
+        <div class="container pb-4">
+            <h4>Theory</h4>
+            <p>
+            The model is a system of three ordinary differential equations now
+            known as the Lorenz equations:
+            \begin{align}
+                \begin{split}
+                    \dot{x} &= \sigma (y - x) \\
+                    \dot{y} &= x (\rho - z) - y \\
+                    \dot{z} &= x y - \beta z. \\
+                \end{split}
+            \end{align}
+            In the following, the parameters $\beta = 8/3$ and $\sigma = 10$
+            are fixed, while $\rho$ serves as bifurcation parameter.
+            </p>
+        </div>
+        <div class="container pb-4">
+            <h4>Simulation</h4>
+            <div
+                class="container d-flex align-items-center justify-content-center"
+                id="simulation"
+            ></div>
+        </div>
+    </body>
+</html>

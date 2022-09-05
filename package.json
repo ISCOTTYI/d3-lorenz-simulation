@@ -1,0 +1,22 @@
+{
+  "name": "self_orga_project_template",
+  "version": "1.0.0",
+  "description": "Simple visualization of the Lorenz system",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "katex": "^0.16.2",
+    "p5": "^1.4.2"
+  }
+}

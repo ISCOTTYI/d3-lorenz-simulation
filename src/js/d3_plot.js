@@ -1,41 +1,93 @@
 import * as d3 from 'd3';
 import { canvas, width, height, xSc, ySc } from './d3_plot_util/axes.js';
 
-let initP = {x: 1, y: 10};
-var data = [initP];
-update();
+const sig = 10, beta = 8/3, rho = 28;
+let v0 = {
+  x: 1,
+  y: 1,
+  z: 25,
+  t: 0
+};
+var data = [v0];
+updateLine();
 
-function step() {
-  let lastP = data[data.length - 1];
-  let lx = lastP.x, ly = lastP.y;
-  let newP = {x: lx * 2, y: ly * 2};
-  data.push(newP);
+function step(dt) {
+  var v = data[data.length-1];
+  var x = v.x, y = v.y, z = v.z, t = v.t;
+  var w = {
+    x: x + (sig * (y - x)) * dt,
+    y: y + (x * (rho - z) - y) * dt,
+    z: z + (x * y - beta * z) * dt,
+    t: t + dt
+  }
+  data.push(w);
 }
 
-function update() {
-  canvas
-    .selectAll('circle')
-    .data(data)
-    .join('circle')
-    .attr('cx', function(d, i) {
-      return xSc(d.x);
-    })
-    .attr('cy', function(d, i) {
-      return ySc(d.y);
-    })
-    .attr('r', 3)
-    .style('fill', 'red');
+function updateLine() {
+  canvas.selectAll('#myPath')
+    .data([data])
+    .join(
+      function(enter) {
+        return enter
+          .append('path')
+            .attr('id', 'myPath')
+            .attr('fill', 'none')
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', 1.5)
+            .attr('d', d3.line()
+              .x(function(d, i) {return xSc(d.x)})
+              .y(function(d, i) {return ySc(d.z)})
+            );
+      },
+      function(update) {
+        return update
+          .attr('d', d3.line()
+            .x(function(d, i) {return xSc(d.x)})
+            .y(function(d, i) {return ySc(d.z)})
+          );
+      }
+    );
 }
 
-function updatePlot() {
+// function updateLine() {
+//   canvas
+//     .selectAll('.myPath').remove();
+//   canvas
+//     .append('path')
+//       .datum(data)
+//       .attr('class', 'myPath')
+//       .attr('fill', 'none')
+//       .attr('stroke', 'steelblue')
+//       .attr('stroke-width', 1.5)
+//       .attr('d', d3.line()
+//         .x(function(d, i) {return xSc(d.x)})
+//         .y(function(d, i) {return ySc(d.z)})
+//       )
+// }
+
+function run() {
+  let running = false;
+  let intvl;
   d3.select('button')
     .on('click', function() {
-      console.log(data);
-      step();
-      console.log(data);
-      update();
+      if (!running) {
+        running = true;
+        d3.select(this)
+          .text('Pause')
+          .attr('class', 'btn btn-danger');
+        intvl = setInterval(function() {
+          step(0.001);
+          updateLine();
+        }, 0.001); // TODO: Define a d3 scale that maps real time to step time
+      } else {
+        running = false;
+        d3.select(this)
+          .text('Play')
+          .attr('class', 'btn btn-success');
+        clearInterval(intvl);
+      }
     })
 }
 
-updatePlot();
+run();
 

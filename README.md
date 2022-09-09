@@ -1,4 +1,4 @@
-# Bootstrap Project
+# Example Project
 
 * Need NodeJS installed
 
@@ -27,3 +27,5 @@
   * [Beginner-friendly course](https://www.d3indepth.com/).
   * [Rich example library](https://d3-graph-gallery.com/).
 * [This](https://www.d3indepth.com/datajoins/) may be particularly important for plots.
+* [`data()` vs `datum()`](https://www.intothevoid.io/data-visualization/understanding-d3-data-vs-datum/).
+* [Updating paths with new data caveats](https://stackoverflow.com/questions/73651710/d3-line-chart-extend-existing-path-with-new-data/73656083#73656083).

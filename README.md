@@ -20,6 +20,12 @@
         npm run build
 
   respectively [source](https://parceljs.org/getting-started/webapp/).
+  Note, that you have to specify the public URL, where the website will be deployed
+  using either the `--public-url` CLI option (in the parcel build command) or set
+  the `publicUrl` key in `package.json`.
+  * There might happen some weirdness with the paths of the `href` and `src` in
+    development and build. For development, it might help to run the `npm start` within
+    the `src` directory. Otherwise, specify the `--public-url`...?
 * Using KaTeX (css must be manually imported) with [auto-render](https://katex.org/docs/autorender.html), math can be typeset just like in a typical LaTeX body.
 * A p5 sketch instance is created in the DOM as described [here](https://github.com/processing/p5.js/wiki/Global-and-instance-mode).
 * Very useful D3.js resources:

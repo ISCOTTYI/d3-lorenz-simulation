@@ -7,7 +7,7 @@ export const margin = {
   right: 40,
   left: 40
 };
-export const owidth = 800, oheight = 600;
+export const owidth = 440, oheight = 340;
 export const width = owidth - margin.left - margin.right;
 export const height = oheight - margin.top - margin.bottom;
 
@@ -58,4 +58,4 @@ canvas.append('text')
   .attr('x', -height/2)
   .attr('font-style', 'italic')
   .attr('font-family', 'Times')
-  .text('y');
+  .text('z');

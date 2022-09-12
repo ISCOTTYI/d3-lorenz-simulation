@@ -21,8 +21,8 @@ export const canvas = svg.append("g")
 canvas.attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Construct scales and axes
-const xmin = -30, xmax = 30;
-const ymin = 0, ymax = 95;
+const xmin = -32, xmax = 32;
+const ymin = -5, ymax = 75;
 // Create a scale that maps data to canvas (D3) coordinates
 export var xSc = d3.scaleLinear()
   .domain([xmin, xmax]) // Data coordinate range

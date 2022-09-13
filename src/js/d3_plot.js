@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { canvas, width, height, xSc, ySc } from './d3_plot_util/axes.js';
+import { canvas, width, height, xSc, ySc } from '../lib/d3_axes.js';
 
 const sig = 10, beta = 8/3;
 var rho = 28;

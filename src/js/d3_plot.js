@@ -117,8 +117,12 @@ function run() {
       }
     });
   d3.select('#rho-changer')
-    .on('change', function () {
+    .on('input', function() {
       rho = d3.select(this).property('value');
+      d3.select('#rho-value')
+        .html(`ρ = ${rho}`)
+    })
+    .on('change', function () {
       // Reset plot
       data = [v0];
       updateLine();
